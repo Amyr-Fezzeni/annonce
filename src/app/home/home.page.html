@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="body" [fullscreen]="true">
+ <app-searchbar></app-searchbar>
+
+  <div class="annonces">
+    <app-annonce-item *ngFor="let item of annonces" [item]="item"></app-annonce-item>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon (click)="addAnnonce()" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

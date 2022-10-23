@@ -1,0 +1,15 @@
+
+
+<ion-content >
+  <div class="header">
+    <h1>{{ user_.fullName }}</h1>
+    <div class="avatar">
+      <ion-img src="assets\profile.jpg"></ion-img>
+    </div>
+  </div>
+  <div class="annonces">
+    <app-annonce-profile *ngFor="let item of annonces" [item]="item">
+     
+    </app-annonce-profile>
+  </div>
+</ion-content>

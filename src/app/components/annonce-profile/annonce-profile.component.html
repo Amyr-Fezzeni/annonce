@@ -1,0 +1,16 @@
+
+
+<div class="card">
+  <ion-img src="assets/icon/annonce.png"></ion-img>
+
+<div class="card-content"> 
+  <h2>{{item.title}}</h2>
+  <p>{{item.description}}</p> 
+  <ion-buttons>
+  <ion-button (click)="onDelete(item.id)" >
+    <ion-icon slot="icon-only" name="trash"></ion-icon>
+  </ion-button>
+</ion-buttons>
+</div>
+
+</div>
