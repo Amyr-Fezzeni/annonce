@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Annonce } from '../models/annonce.model';
 import { UserModel } from '../models/user.model';
 import { AnnonceService } from '../services/annonce.service';
-import { UserData } from '../services/login.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-tab2',
@@ -12,18 +12,27 @@ import { UserData } from '../services/login.service';
 export class Profile {
 
   annonces: Annonce[] = [];
-  user_:UserModel = UserData.currentUser;
-  constructor(private serviceAnnonce: AnnonceService) {}
+  user_:any;
+  constructor(private serviceAnnonce: AnnonceService, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.user_ = UserData.currentUser;
+    this.user_ = UserService.currentUser;
     this.serviceAnnonce.getAllAnnonces().subscribe(
       res => {
         this.annonces = [];
-        this.annonces = res;
+        res.forEach((annonce) =>{
+          if(annonce.userId == this.user_.id){
+            this.annonces.push(annonce);
+          }
+        });
+        
         console.log(this.annonces);
       }
     );
   }
-  onDelete(id){}
+  logout(){
+    this.userService.logOut();
+    
+  }
+
 }

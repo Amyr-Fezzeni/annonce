@@ -10,7 +10,7 @@ import { UserData } from 'src/app/services/login.service';
 })
 export class AnnonceProfileComponent {
   @Input() item: Annonce;
-  constructor(private user: UserData, private serviceAnnonce: AnnonceService) { }
+  constructor( private serviceAnnonce: AnnonceService) { }
 
 onDelete(itemId:String){
   console.log(itemId);

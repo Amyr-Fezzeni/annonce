@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/signup">Sign up</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <h1>Login</h1>
+    <img src="assets\icon\My-Deals-App-Logo1.png"/>
+  </div>
+  <form id="form" name="form" #f="ngForm">
+    
+   
+      <div class="form-group" >
+        <ion-item class="ion-margin-bottom">
+          <ion-input type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          #email="ngModel"
+          placeholder="Email"
+          [ngClass]="{ 'is-invalid': f.submitted && email.errors }" ></ion-input>
+        </ion-item>
+      </div> 
+  
+        <div class="form-group" >
+          <ion-item class="ion-margin-bottom">
+            <ion-input type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            #password="ngModel"
+            placeholder="password"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }" ></ion-input>
+          </ion-item>
+        </div> 
+   
+     
+          <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="password.errors && f.submitted" class="invalid-feedback">
+          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      
+     
+         <ion-button (click)="login()" expand="block" shape="round">Login</ion-button>
+      
+    
+   
+  </form>
+</ion-content>
